@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "pfinalb647206f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
