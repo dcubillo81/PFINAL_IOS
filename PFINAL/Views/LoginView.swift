@@ -68,14 +68,14 @@ struct LoginView: View {
             }else{
                 Amplify.Auth.signIn(username: username, password: password) { result in
                     switch result {
-                    
+
                     case .success:
                         print("\(username) signed in")
                         DispatchQueue.main.async {
                             logged = true
                             print("Login In")
                         }
-                        
+
                     case .failure(let error):
                         print(error)
                         DispatchQueue.main.async {
