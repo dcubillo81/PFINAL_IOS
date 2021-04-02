@@ -28,6 +28,9 @@ struct PFINALApp: App {
             Amplify.Logging.logLevel = .verbose
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.add(plugin: AWSS3StoragePlugin())
+            let models = AmplifyModels()
+            try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: models))
+            try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: models))
             try Amplify.configure()
             
             print("Amplify configured with auth plugin")

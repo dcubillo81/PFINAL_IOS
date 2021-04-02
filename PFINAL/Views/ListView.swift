@@ -16,17 +16,22 @@ struct ListView: View {
     @AppStorage("status") var logged = false
     
     var body: some View {
-        Button(action: logOut) {
-            HStack(alignment: .center) {
-                Spacer()
-                Text("Log Out").foregroundColor(Color.white)
-                Spacer()
+        
+        VStack{
+            
+            TabView {
+                MyPhotosView()
+                    .tabItem { Image(systemName: "photo.on.rectangle") }
+                CameraView()
+                    .tabItem { Image(systemName: "plus.app") }
             }
+            
+            Button(action: logOut) {
+                Text("Log Out").foregroundColor(Color.blue)
+            }
+            .padding()
+            .cornerRadius(4.0)
         }
-        .padding()
-        .background(Color.red)
-        .cornerRadius(4.0)
-        .onAppear { self.uploadData() }
     }
     
     func logOut(){

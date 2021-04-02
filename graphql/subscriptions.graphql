@@ -1,0 +1,58 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateTodo {
+  onCreateTodo {
+    id
+    imagekey
+    coment1
+    author1
+    coment2
+    author2
+    coment3
+    author3
+    likes
+    user
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTodo {
+  onUpdateTodo {
+    id
+    imagekey
+    coment1
+    author1
+    coment2
+    author2
+    coment3
+    author3
+    likes
+    user
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTodo {
+  onDeleteTodo {
+    id
+    imagekey
+    coment1
+    author1
+    coment2
+    author2
+    coment3
+    author3
+    likes
+    user
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

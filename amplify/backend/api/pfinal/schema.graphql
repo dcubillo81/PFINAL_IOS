@@ -1,0 +1,12 @@
+type Todo @model {
+  id: ID!
+  imagekey: String!
+  coment1: String
+  author1: String
+  coment2: String
+  author2: String
+  coment3: String
+  author3: String
+  likes: String
+  user: String
+}
