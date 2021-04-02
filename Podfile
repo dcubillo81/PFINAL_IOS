@@ -8,6 +8,7 @@ target 'PFINAL' do
   # Pods for PFINAL
   pod 'Amplify'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+  pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'SCLAlertView'
 
 end

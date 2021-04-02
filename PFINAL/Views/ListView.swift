@@ -8,6 +8,7 @@
 import SwiftUI
 import LocalAuthentication
 import Amplify
+import AmplifyPlugins
 import SCLAlertView
 
 struct ListView: View {
@@ -21,7 +22,11 @@ struct ListView: View {
                 Text("Log Out").foregroundColor(Color.white)
                 Spacer()
             }
-        }.padding().background(Color.red).cornerRadius(4.0)
+        }
+        .padding()
+        .background(Color.red)
+        .cornerRadius(4.0)
+        .onAppear { self.uploadData() }
     }
     
     func logOut(){
@@ -38,7 +43,25 @@ struct ListView: View {
                 }
             }
         }
+    }//logout
+    
+    func uploadData() {
+        let dataString = "Example file contents"
+        let data = dataString.data(using: .utf8)!
+        Amplify.Storage.uploadData(key: "ExampleKey", data: data,
+            progressListener: { progress in
+                print("Progress: \(progress)")
+            }, resultListener: { (event) in
+                switch event {
+                case .success(let data):
+                    print("Completed: \(data)")
+                case .failure(let storageError):
+                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+            }
+        })
     }
+    
+    
 }
 
 struct ListView_Previews: PreviewProvider {
