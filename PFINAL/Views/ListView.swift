@@ -14,6 +14,7 @@ import SCLAlertView
 struct ListView: View {
     
     @AppStorage("status") var logged = false
+    @AppStorage("username") var userlogged=""
     
     var body: some View {
         
@@ -25,6 +26,10 @@ struct ListView: View {
                 CameraView()
                     .tabItem { Image(systemName: "plus.app") }
             }
+            
+            Text("Bienvenido "+userlogged)
+                .font(.headline)
+                .foregroundColor(.blue)
             
             Button(action: logOut) {
                 Text("Log Out").foregroundColor(Color.blue)

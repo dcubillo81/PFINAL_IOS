@@ -12,6 +12,7 @@ import SCLAlertView
 
 struct LoginView: View {
     @AppStorage("status") var logged = false
+    @AppStorage("username") var userlogged = ""
     @State private var username = ""
     @State private var password = ""
     
@@ -73,6 +74,7 @@ struct LoginView: View {
                         print("\(username) signed in")
                         DispatchQueue.main.async {
                             logged = true
+                            userlogged=username
                             print("Login In")
                         }
 

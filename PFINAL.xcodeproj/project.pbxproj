@@ -17,6 +17,8 @@
 		0C7C646526162C20000E5341 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C646426162C20000E5341 /* LoginView.swift */; };
 		0C7C646A261632F4000E5341 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7C6469261632F4000E5341 /* ListView.swift */; };
 		0CF8EB01261787C900926EC5 /* ImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8EB00261787C900926EC5 /* ImageSelector.swift */; };
+		0CF8EB162617BF8100926EC5 /* Server_response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8EB152617BF8100926EC5 /* Server_response.swift */; };
+		0CF8EB192617BF9300926EC5 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8EB182617BF9300926EC5 /* CommentsViewModel.swift */; };
 		225EA3E2345B4842972B0BA7 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B6F4A7A960DB4EFE908F651D /* awsconfiguration.json */; };
 		3997005842A841228C574EB5 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = AECF35C343224B3AA006FFF8 /* amplifyconfiguration.json */; };
 		C4306D24684A42BAACB5CFB6 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEE9B73EF24137A0DBCA0B /* Todo.swift */; };
@@ -39,6 +41,8 @@
 		0C7C646426162C20000E5341 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0C7C6469261632F4000E5341 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		0CF8EB00261787C900926EC5 /* ImageSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelector.swift; sourceTree = "<group>"; };
+		0CF8EB152617BF8100926EC5 /* Server_response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server_response.swift; sourceTree = "<group>"; };
+		0CF8EB182617BF9300926EC5 /* CommentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		3F93D0E3D70C1F1DA7E852C7 /* Pods-PFINAL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFINAL.debug.xcconfig"; path = "Target Support Files/Pods-PFINAL/Pods-PFINAL.debug.xcconfig"; sourceTree = "<group>"; };
 		4ADED9CCEB0949FAB48E88E0 /* schema.graphql */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text; name = schema.graphql; path = amplify/backend/api/pfinal/schema.graphql; sourceTree = "<group>"; };
 		5706856CF7CF49D3827F41C1 /* Todo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "Todo+Schema.swift"; path = "amplify/generated/models/Todo+Schema.swift"; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		0C7C64342616118C000E5341 = {
 			isa = PBXGroup;
 			children = (
+				0CF8EB142617BF5E00926EC5 /* API_Response */,
 				5D19A18E5E934AC4BC6C8165 /* AmplifyModels */,
 				9E287FD33E34400AB05F339F /* AmplifyConfig */,
 				0C7C643F2616118C000E5341 /* PFINAL */,
@@ -120,8 +125,17 @@
 		0CECFF4626163B0200F49047 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0CF8EB182617BF9300926EC5 /* CommentsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0CF8EB142617BF5E00926EC5 /* API_Response */ = {
+			isa = PBXGroup;
+			children = (
+				0CF8EB152617BF8100926EC5 /* Server_response.swift */,
+			);
+			path = API_Response;
 			sourceTree = "<group>";
 		};
 		526A85F620C67E17787148A8 /* Frameworks */ = {
@@ -288,6 +302,8 @@
 				F5114D17CA4E49B2A2BBDA03 /* AmplifyModels.swift in Sources */,
 				0CF8EB01261787C900926EC5 /* ImageSelector.swift in Sources */,
 				C4306D24684A42BAACB5CFB6 /* Todo.swift in Sources */,
+				0CF8EB162617BF8100926EC5 /* Server_response.swift in Sources */,
+				0CF8EB192617BF9300926EC5 /* CommentsViewModel.swift in Sources */,
 				0C475B2B26177DFF000D58D0 /* MyPhotosView.swift in Sources */,
 				F5558947E0534129873BEE18 /* Todo+Schema.swift in Sources */,
 			);
