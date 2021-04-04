@@ -88,12 +88,12 @@ struct newuserView: View {
                      
                         let alert = SCLAlertView(
                         )
-                        let txt = alert.addTextField("Enter confirm number")
-                        alert.addButton("Confirm") {
+                        let txt = alert.addTextField("Número de confirmación")
+                        alert.addButton("Confirmación") {
                             confirmSignUp(emailCode: txt.text!)
                             print("Facilitar Codigo")
                         }
-                        alert.showEdit("SMS", subTitle: "Enter the code received in your email", closeButtonTitle: "Cancel")
+                        alert.showEdit("SMS", subTitle: "Ingrese el código recibido en su correo", closeButtonTitle: "Cancelar")
                     }
                     
                 case .done:
@@ -128,7 +128,7 @@ struct newuserView: View {
                     password = ""
                     email = ""
                     DispatchQueue.main.async {
-                        SCLAlertView().showInfo("Success", subTitle: "Email Confirmed") // Info
+                        SCLAlertView().showInfo("Listo", subTitle: "Email Confirmado") // Info
                     }
                 
                 }

@@ -18,15 +18,14 @@ struct ContentView: View {
         NavigationView{
             if logged == false{
                 LoginView()
-                .navigationBarHidden(true)
+                //.navigationBarHidden(true)
         }else{
             ListView()
-            .navigationBarHidden(true)
+            //.navigationBarHidden(true)
             
         }
         }//NavigationView
         .onAppear { self.fetchCurrentAuthSession() }
-        .navigationBarTitle("Inicio")
     }//View
     
     //VERIFICA QUE ESTA INICIADA LA SESION EN AMPLIFY

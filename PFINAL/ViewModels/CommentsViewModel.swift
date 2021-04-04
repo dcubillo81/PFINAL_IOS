@@ -9,17 +9,12 @@ import Foundation
 
 class CommentsViewModel: ObservableObject {
     
-    @Published var messages = "Message inside the observable object"
-    
     @Published var r_users = [RandomUser]()
     
     @Published var quote = [Quote]()
     
     @Published var singlequote = ""
     
-    func changeMessage(){
-        self.messages = "New Message"
-    }
     
     func load_r_users() {
         let url = ( "https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole")

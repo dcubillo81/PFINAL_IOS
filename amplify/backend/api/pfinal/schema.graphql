@@ -9,4 +9,5 @@ type Todo @model {
   author3: String
   likes: String
   user: String
+  date: String
 }

@@ -14,9 +14,7 @@ mutation CreateTodo(
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }
@@ -36,9 +34,7 @@ mutation UpdateTodo(
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }
@@ -58,9 +54,7 @@ mutation DeleteTodo(
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }

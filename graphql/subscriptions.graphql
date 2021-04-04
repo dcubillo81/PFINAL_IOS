@@ -11,9 +11,7 @@ subscription OnCreateTodo {
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }
@@ -30,9 +28,7 @@ subscription OnUpdateTodo {
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }
@@ -49,9 +45,7 @@ subscription OnDeleteTodo {
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }

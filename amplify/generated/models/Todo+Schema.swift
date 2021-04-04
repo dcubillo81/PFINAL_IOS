@@ -15,6 +15,7 @@ extension Todo {
     case author3
     case likes
     case user
+    case date
   }
   
   public static let keys = CodingKeys.self
@@ -35,7 +36,8 @@ extension Todo {
       .field(todo.coment3, is: .optional, ofType: .string),
       .field(todo.author3, is: .optional, ofType: .string),
       .field(todo.likes, is: .optional, ofType: .string),
-      .field(todo.user, is: .optional, ofType: .string)
+      .field(todo.user, is: .optional, ofType: .string),
+      .field(todo.date, is: .optional, ofType: .string)
     )
     }
 }

@@ -1,37 +1,4 @@
 # this is an auto generated file. This will be overwritten
-query SyncTodos(
-  $filter: ModelTodoFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncTodos(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      imagekey
-      coment1
-      author1
-      coment2
-      author2
-      coment3
-      author3
-      likes
-      user
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
 query GetTodo($id: ID!) {
   getTodo(id: $id) {
     id
@@ -44,9 +11,7 @@ query GetTodo($id: ID!) {
     author3
     likes
     user
-    _version
-    _deleted
-    _lastChangedAt
+    date
     createdAt
     updatedAt
   }
@@ -68,13 +33,10 @@ query ListTodos(
       author3
       likes
       user
-      _version
-      _deleted
-      _lastChangedAt
+      date
       createdAt
       updatedAt
     }
     nextToken
-    startedAt
   }
 }

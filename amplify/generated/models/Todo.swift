@@ -13,6 +13,7 @@ public struct Todo: Model {
   public var author3: String?
   public var likes: String?
   public var user: String?
+  public var date: String?
   
   public init(id: String = UUID().uuidString,
       imagekey: String,
@@ -23,7 +24,8 @@ public struct Todo: Model {
       coment3: String? = nil,
       author3: String? = nil,
       likes: String? = nil,
-      user: String? = nil) {
+      user: String? = nil,
+      date: String? = nil) {
       self.id = id
       self.imagekey = imagekey
       self.coment1 = coment1
@@ -34,5 +36,6 @@ public struct Todo: Model {
       self.author3 = author3
       self.likes = likes
       self.user = user
+      self.date = date
   }
 }

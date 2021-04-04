@@ -5,8 +5,8 @@ import AWSAppSync
 public struct CreateTodoInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int? = nil) {
-    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version]
+  public init(id: GraphQLID? = nil, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil) {
+    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date]
   }
 
   public var id: GraphQLID? {
@@ -99,12 +99,12 @@ public struct CreateTodoInput: GraphQLMapConvertible {
     }
   }
 
-  public var version: Int? {
+  public var date: String? {
     get {
-      return graphQLMap["_version"] as! Int?
+      return graphQLMap["date"] as! String?
     }
     set {
-      graphQLMap.updateValue(newValue, forKey: "_version")
+      graphQLMap.updateValue(newValue, forKey: "date")
     }
   }
 }
@@ -112,8 +112,8 @@ public struct CreateTodoInput: GraphQLMapConvertible {
 public struct ModelTodoConditionInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(imagekey: ModelStringInput? = nil, coment1: ModelStringInput? = nil, author1: ModelStringInput? = nil, coment2: ModelStringInput? = nil, author2: ModelStringInput? = nil, coment3: ModelStringInput? = nil, author3: ModelStringInput? = nil, likes: ModelStringInput? = nil, user: ModelStringInput? = nil, and: [ModelTodoConditionInput?]? = nil, or: [ModelTodoConditionInput?]? = nil, not: ModelTodoConditionInput? = nil) {
-    graphQLMap = ["imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "and": and, "or": or, "not": not]
+  public init(imagekey: ModelStringInput? = nil, coment1: ModelStringInput? = nil, author1: ModelStringInput? = nil, coment2: ModelStringInput? = nil, author2: ModelStringInput? = nil, coment3: ModelStringInput? = nil, author3: ModelStringInput? = nil, likes: ModelStringInput? = nil, user: ModelStringInput? = nil, date: ModelStringInput? = nil, and: [ModelTodoConditionInput?]? = nil, or: [ModelTodoConditionInput?]? = nil, not: ModelTodoConditionInput? = nil) {
+    graphQLMap = ["imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "and": and, "or": or, "not": not]
   }
 
   public var imagekey: ModelStringInput? {
@@ -194,6 +194,15 @@ public struct ModelTodoConditionInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "user")
+    }
+  }
+
+  public var date: ModelStringInput? {
+    get {
+      return graphQLMap["date"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "date")
     }
   }
 
@@ -489,8 +498,8 @@ public struct ModelSizeInput: GraphQLMapConvertible {
 public struct UpdateTodoInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, imagekey: String? = nil, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int? = nil) {
-    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version]
+  public init(id: GraphQLID, imagekey: String? = nil, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil) {
+    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date]
   }
 
   public var id: GraphQLID {
@@ -583,12 +592,12 @@ public struct UpdateTodoInput: GraphQLMapConvertible {
     }
   }
 
-  public var version: Int? {
+  public var date: String? {
     get {
-      return graphQLMap["_version"] as! Int?
+      return graphQLMap["date"] as! String?
     }
     set {
-      graphQLMap.updateValue(newValue, forKey: "_version")
+      graphQLMap.updateValue(newValue, forKey: "date")
     }
   }
 }
@@ -596,8 +605,8 @@ public struct UpdateTodoInput: GraphQLMapConvertible {
 public struct DeleteTodoInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, version: Int? = nil) {
-    graphQLMap = ["id": id, "_version": version]
+  public init(id: GraphQLID? = nil) {
+    graphQLMap = ["id": id]
   }
 
   public var id: GraphQLID? {
@@ -608,22 +617,13 @@ public struct DeleteTodoInput: GraphQLMapConvertible {
       graphQLMap.updateValue(newValue, forKey: "id")
     }
   }
-
-  public var version: Int? {
-    get {
-      return graphQLMap["_version"] as! Int?
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "_version")
-    }
-  }
 }
 
 public struct ModelTodoFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: ModelIDInput? = nil, imagekey: ModelStringInput? = nil, coment1: ModelStringInput? = nil, author1: ModelStringInput? = nil, coment2: ModelStringInput? = nil, author2: ModelStringInput? = nil, coment3: ModelStringInput? = nil, author3: ModelStringInput? = nil, likes: ModelStringInput? = nil, user: ModelStringInput? = nil, and: [ModelTodoFilterInput?]? = nil, or: [ModelTodoFilterInput?]? = nil, not: ModelTodoFilterInput? = nil) {
-    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "and": and, "or": or, "not": not]
+  public init(id: ModelIDInput? = nil, imagekey: ModelStringInput? = nil, coment1: ModelStringInput? = nil, author1: ModelStringInput? = nil, coment2: ModelStringInput? = nil, author2: ModelStringInput? = nil, coment3: ModelStringInput? = nil, author3: ModelStringInput? = nil, likes: ModelStringInput? = nil, user: ModelStringInput? = nil, date: ModelStringInput? = nil, and: [ModelTodoFilterInput?]? = nil, or: [ModelTodoFilterInput?]? = nil, not: ModelTodoFilterInput? = nil) {
+    graphQLMap = ["id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "and": and, "or": or, "not": not]
   }
 
   public var id: ModelIDInput? {
@@ -713,6 +713,15 @@ public struct ModelTodoFilterInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "user")
+    }
+  }
+
+  public var date: ModelStringInput? {
+    get {
+      return graphQLMap["date"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "date")
     }
   }
 
@@ -871,7 +880,7 @@ public struct ModelIDInput: GraphQLMapConvertible {
 
 public final class CreateTodoMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateTodo($input: CreateTodoInput!, $condition: ModelTodoConditionInput) {\n  createTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation CreateTodo($input: CreateTodoInput!, $condition: ModelTodoConditionInput) {\n  createTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateTodoInput
   public var condition: ModelTodoConditionInput?
@@ -926,9 +935,7 @@ public final class CreateTodoMutation: GraphQLMutation {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -939,8 +946,8 @@ public final class CreateTodoMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1042,30 +1049,12 @@ public final class CreateTodoMutation: GraphQLMutation {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -1092,7 +1081,7 @@ public final class CreateTodoMutation: GraphQLMutation {
 
 public final class UpdateTodoMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateTodo($input: UpdateTodoInput!, $condition: ModelTodoConditionInput) {\n  updateTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation UpdateTodo($input: UpdateTodoInput!, $condition: ModelTodoConditionInput) {\n  updateTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateTodoInput
   public var condition: ModelTodoConditionInput?
@@ -1147,9 +1136,7 @@ public final class UpdateTodoMutation: GraphQLMutation {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1160,8 +1147,8 @@ public final class UpdateTodoMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1263,30 +1250,12 @@ public final class UpdateTodoMutation: GraphQLMutation {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -1313,7 +1282,7 @@ public final class UpdateTodoMutation: GraphQLMutation {
 
 public final class DeleteTodoMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteTodo($input: DeleteTodoInput!, $condition: ModelTodoConditionInput) {\n  deleteTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "mutation DeleteTodo($input: DeleteTodoInput!, $condition: ModelTodoConditionInput) {\n  deleteTodo(input: $input, condition: $condition) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteTodoInput
   public var condition: ModelTodoConditionInput?
@@ -1368,9 +1337,7 @@ public final class DeleteTodoMutation: GraphQLMutation {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1381,8 +1348,8 @@ public final class DeleteTodoMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1484,30 +1451,12 @@ public final class DeleteTodoMutation: GraphQLMutation {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -1532,291 +1481,9 @@ public final class DeleteTodoMutation: GraphQLMutation {
   }
 }
 
-public final class SyncTodosQuery: GraphQLQuery {
-  public static let operationString =
-    "query SyncTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncTodos(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      imagekey\n      coment1\n      author1\n      coment2\n      author2\n      coment3\n      author3\n      likes\n      user\n      _version\n      _deleted\n      _lastChangedAt\n      createdAt\n      updatedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
-
-  public var filter: ModelTodoFilterInput?
-  public var limit: Int?
-  public var nextToken: String?
-  public var lastSync: Int?
-
-  public init(filter: ModelTodoFilterInput? = nil, limit: Int? = nil, nextToken: String? = nil, lastSync: Int? = nil) {
-    self.filter = filter
-    self.limit = limit
-    self.nextToken = nextToken
-    self.lastSync = lastSync
-  }
-
-  public var variables: GraphQLMap? {
-    return ["filter": filter, "limit": limit, "nextToken": nextToken, "lastSync": lastSync]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("syncTodos", arguments: ["filter": GraphQLVariable("filter"), "limit": GraphQLVariable("limit"), "nextToken": GraphQLVariable("nextToken"), "lastSync": GraphQLVariable("lastSync")], type: .object(SyncTodo.selections)),
-    ]
-
-    public var snapshot: Snapshot
-
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
-    }
-
-    public init(syncTodos: SyncTodo? = nil) {
-      self.init(snapshot: ["__typename": "Query", "syncTodos": syncTodos.flatMap { $0.snapshot }])
-    }
-
-    public var syncTodos: SyncTodo? {
-      get {
-        return (snapshot["syncTodos"] as? Snapshot).flatMap { SyncTodo(snapshot: $0) }
-      }
-      set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "syncTodos")
-      }
-    }
-
-    public struct SyncTodo: GraphQLSelectionSet {
-      public static let possibleTypes = ["ModelTodoConnection"]
-
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("items", type: .list(.object(Item.selections))),
-        GraphQLField("nextToken", type: .scalar(String.self)),
-        GraphQLField("startedAt", type: .scalar(Int.self)),
-      ]
-
-      public var snapshot: Snapshot
-
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
-      }
-
-      public init(items: [Item?]? = nil, nextToken: String? = nil, startedAt: Int? = nil) {
-        self.init(snapshot: ["__typename": "ModelTodoConnection", "items": items.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "nextToken": nextToken, "startedAt": startedAt])
-      }
-
-      public var __typename: String {
-        get {
-          return snapshot["__typename"]! as! String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      public var items: [Item?]? {
-        get {
-          return (snapshot["items"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Item(snapshot: $0) } } }
-        }
-        set {
-          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "items")
-        }
-      }
-
-      public var nextToken: String? {
-        get {
-          return snapshot["nextToken"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "nextToken")
-        }
-      }
-
-      public var startedAt: Int? {
-        get {
-          return snapshot["startedAt"] as? Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "startedAt")
-        }
-      }
-
-      public struct Item: GraphQLSelectionSet {
-        public static let possibleTypes = ["Todo"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-          GraphQLField("imagekey", type: .nonNull(.scalar(String.self))),
-          GraphQLField("coment1", type: .scalar(String.self)),
-          GraphQLField("author1", type: .scalar(String.self)),
-          GraphQLField("coment2", type: .scalar(String.self)),
-          GraphQLField("author2", type: .scalar(String.self)),
-          GraphQLField("coment3", type: .scalar(String.self)),
-          GraphQLField("author3", type: .scalar(String.self)),
-          GraphQLField("likes", type: .scalar(String.self)),
-          GraphQLField("user", type: .scalar(String.self)),
-          GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("_deleted", type: .scalar(Bool.self)),
-          GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
-          GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        ]
-
-        public var snapshot: Snapshot
-
-        public init(snapshot: Snapshot) {
-          self.snapshot = snapshot
-        }
-
-        public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-          self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
-        }
-
-        public var __typename: String {
-          get {
-            return snapshot["__typename"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var id: GraphQLID {
-          get {
-            return snapshot["id"]! as! GraphQLID
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "id")
-          }
-        }
-
-        public var imagekey: String {
-          get {
-            return snapshot["imagekey"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "imagekey")
-          }
-        }
-
-        public var coment1: String? {
-          get {
-            return snapshot["coment1"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "coment1")
-          }
-        }
-
-        public var author1: String? {
-          get {
-            return snapshot["author1"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "author1")
-          }
-        }
-
-        public var coment2: String? {
-          get {
-            return snapshot["coment2"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "coment2")
-          }
-        }
-
-        public var author2: String? {
-          get {
-            return snapshot["author2"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "author2")
-          }
-        }
-
-        public var coment3: String? {
-          get {
-            return snapshot["coment3"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "coment3")
-          }
-        }
-
-        public var author3: String? {
-          get {
-            return snapshot["author3"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "author3")
-          }
-        }
-
-        public var likes: String? {
-          get {
-            return snapshot["likes"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "likes")
-          }
-        }
-
-        public var user: String? {
-          get {
-            return snapshot["user"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "user")
-          }
-        }
-
-        public var version: Int {
-          get {
-            return snapshot["_version"]! as! Int
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "_version")
-          }
-        }
-
-        public var deleted: Bool? {
-          get {
-            return snapshot["_deleted"] as? Bool
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "_deleted")
-          }
-        }
-
-        public var lastChangedAt: Int {
-          get {
-            return snapshot["_lastChangedAt"]! as! Int
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "_lastChangedAt")
-          }
-        }
-
-        public var createdAt: String {
-          get {
-            return snapshot["createdAt"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "createdAt")
-          }
-        }
-
-        public var updatedAt: String {
-          get {
-            return snapshot["updatedAt"]! as! String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "updatedAt")
-          }
-        }
-      }
-    }
-  }
-}
-
 public final class GetTodoQuery: GraphQLQuery {
   public static let operationString =
-    "query GetTodo($id: ID!) {\n  getTodo(id: $id) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "query GetTodo($id: ID!) {\n  getTodo(id: $id) {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -1869,9 +1536,7 @@ public final class GetTodoQuery: GraphQLQuery {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -1882,8 +1547,8 @@ public final class GetTodoQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1985,30 +1650,12 @@ public final class GetTodoQuery: GraphQLQuery {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -2035,7 +1682,7 @@ public final class GetTodoQuery: GraphQLQuery {
 
 public final class ListTodosQuery: GraphQLQuery {
   public static let operationString =
-    "query ListTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String) {\n  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      imagekey\n      coment1\n      author1\n      coment2\n      author2\n      coment3\n      author3\n      likes\n      user\n      _version\n      _deleted\n      _lastChangedAt\n      createdAt\n      updatedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
+    "query ListTodos($filter: ModelTodoFilterInput, $limit: Int, $nextToken: String) {\n  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      imagekey\n      coment1\n      author1\n      coment2\n      author2\n      coment3\n      author3\n      likes\n      user\n      date\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelTodoFilterInput?
   public var limit: Int?
@@ -2084,7 +1731,6 @@ public final class ListTodosQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("items", type: .list(.object(Item.selections))),
         GraphQLField("nextToken", type: .scalar(String.self)),
-        GraphQLField("startedAt", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -2093,8 +1739,8 @@ public final class ListTodosQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(items: [Item?]? = nil, nextToken: String? = nil, startedAt: Int? = nil) {
-        self.init(snapshot: ["__typename": "ModelTodoConnection", "items": items.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "nextToken": nextToken, "startedAt": startedAt])
+      public init(items: [Item?]? = nil, nextToken: String? = nil) {
+        self.init(snapshot: ["__typename": "ModelTodoConnection", "items": items.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "nextToken": nextToken])
       }
 
       public var __typename: String {
@@ -2124,15 +1770,6 @@ public final class ListTodosQuery: GraphQLQuery {
         }
       }
 
-      public var startedAt: Int? {
-        get {
-          return snapshot["startedAt"] as? Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "startedAt")
-        }
-      }
-
       public struct Item: GraphQLSelectionSet {
         public static let possibleTypes = ["Todo"]
 
@@ -2148,9 +1785,7 @@ public final class ListTodosQuery: GraphQLQuery {
           GraphQLField("author3", type: .scalar(String.self)),
           GraphQLField("likes", type: .scalar(String.self)),
           GraphQLField("user", type: .scalar(String.self)),
-          GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("_deleted", type: .scalar(Bool.self)),
-          GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("date", type: .scalar(String.self)),
           GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
         ]
@@ -2161,8 +1796,8 @@ public final class ListTodosQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-          self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+        public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+          self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
         }
 
         public var __typename: String {
@@ -2264,30 +1899,12 @@ public final class ListTodosQuery: GraphQLQuery {
           }
         }
 
-        public var version: Int {
+        public var date: String? {
           get {
-            return snapshot["_version"]! as! Int
+            return snapshot["date"] as? String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "_version")
-          }
-        }
-
-        public var deleted: Bool? {
-          get {
-            return snapshot["_deleted"] as? Bool
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "_deleted")
-          }
-        }
-
-        public var lastChangedAt: Int {
-          get {
-            return snapshot["_lastChangedAt"]! as! Int
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+            snapshot.updateValue(newValue, forKey: "date")
           }
         }
 
@@ -2315,7 +1932,7 @@ public final class ListTodosQuery: GraphQLQuery {
 
 public final class OnCreateTodoSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateTodo {\n  onCreateTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnCreateTodo {\n  onCreateTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public init() {
   }
@@ -2361,9 +1978,7 @@ public final class OnCreateTodoSubscription: GraphQLSubscription {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2374,8 +1989,8 @@ public final class OnCreateTodoSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2477,30 +2092,12 @@ public final class OnCreateTodoSubscription: GraphQLSubscription {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -2527,7 +2124,7 @@ public final class OnCreateTodoSubscription: GraphQLSubscription {
 
 public final class OnUpdateTodoSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateTodo {\n  onUpdateTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnUpdateTodo {\n  onUpdateTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public init() {
   }
@@ -2573,9 +2170,7 @@ public final class OnUpdateTodoSubscription: GraphQLSubscription {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2586,8 +2181,8 @@ public final class OnUpdateTodoSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2689,30 +2284,12 @@ public final class OnUpdateTodoSubscription: GraphQLSubscription {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 
@@ -2739,7 +2316,7 @@ public final class OnUpdateTodoSubscription: GraphQLSubscription {
 
 public final class OnDeleteTodoSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteTodo {\n  onDeleteTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    _version\n    _deleted\n    _lastChangedAt\n    createdAt\n    updatedAt\n  }\n}"
+    "subscription OnDeleteTodo {\n  onDeleteTodo {\n    __typename\n    id\n    imagekey\n    coment1\n    author1\n    coment2\n    author2\n    coment3\n    author3\n    likes\n    user\n    date\n    createdAt\n    updatedAt\n  }\n}"
 
   public init() {
   }
@@ -2785,9 +2362,7 @@ public final class OnDeleteTodoSubscription: GraphQLSubscription {
         GraphQLField("author3", type: .scalar(String.self)),
         GraphQLField("likes", type: .scalar(String.self)),
         GraphQLField("user", type: .scalar(String.self)),
-        GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
-        GraphQLField("_deleted", type: .scalar(Bool.self)),
-        GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
       ]
@@ -2798,8 +2373,8 @@ public final class OnDeleteTodoSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int, createdAt: String, updatedAt: String) {
-        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: GraphQLID, imagekey: String, coment1: String? = nil, author1: String? = nil, coment2: String? = nil, author2: String? = nil, coment3: String? = nil, author3: String? = nil, likes: String? = nil, user: String? = nil, date: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "Todo", "id": id, "imagekey": imagekey, "coment1": coment1, "author1": author1, "coment2": coment2, "author2": author2, "coment3": coment3, "author3": author3, "likes": likes, "user": user, "date": date, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2901,30 +2476,12 @@ public final class OnDeleteTodoSubscription: GraphQLSubscription {
         }
       }
 
-      public var version: Int {
+      public var date: String? {
         get {
-          return snapshot["_version"]! as! Int
+          return snapshot["date"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "_version")
-        }
-      }
-
-      public var deleted: Bool? {
-        get {
-          return snapshot["_deleted"] as? Bool
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_deleted")
-        }
-      }
-
-      public var lastChangedAt: Int {
-        get {
-          return snapshot["_lastChangedAt"]! as! Int
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "_lastChangedAt")
+          snapshot.updateValue(newValue, forKey: "date")
         }
       }
 

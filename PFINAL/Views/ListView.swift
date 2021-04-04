@@ -19,23 +19,29 @@ struct ListView: View {
     var body: some View {
         
         VStack{
-            
+            HStack{
+                Text("Bienvenido "+userlogged)
+                    .font(.headline)
+                    .foregroundColor(.blue)
+                Image("cenfotec4")
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: 35, height: 35, alignment: .center)
+            }
+            .padding(.top,-60)
             TabView {
                 MyPhotosView()
-                    .tabItem { Image(systemName: "photo.on.rectangle") }
+                    .tabItem { Image(systemName: "photo.on.rectangle")}
                 CameraView()
-                    .tabItem { Image(systemName: "plus.app") }
+                    .tabItem {Image(systemName: "plus.app")}
             }
-            
-            Text("Bienvenido "+userlogged)
-                .font(.headline)
-                .foregroundColor(.blue)
             
             Button(action: logOut) {
                 Text("Log Out").foregroundColor(Color.blue)
+                    .font(.callout)
             }
-            .padding()
-            .cornerRadius(4.0)
+            //.padding()
+            //.cornerRadius(4.0)
         }
     }
     

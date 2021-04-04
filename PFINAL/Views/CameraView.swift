@@ -89,8 +89,13 @@ struct CameraView: View {
                 print("Uploaded image")
                 
                 let number = Int.random(in: 0..<1000)
+                let date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                
                 // Save image to a Post
-                let post = Todo(imagekey: key, coment1: commentsVM.singlequote, author1: commentsVM.r_users[0].first, coment2: commentsVM.singlequote, author2: commentsVM.r_users[1].first, coment3: commentsVM.singlequote, author3: commentsVM.r_users[2].first, likes: "\(number)",user:userlogged)
+                let post = Todo(imagekey: key, coment1: commentsVM.singlequote, author1: commentsVM.r_users[0].first+" "+commentsVM.r_users[0].last, coment2: commentsVM.singlequote, author2: commentsVM.r_users[1].first+" "+commentsVM.r_users[1].last, coment3: commentsVM.singlequote, author3: commentsVM.r_users[2].first+" "+commentsVM.r_users[2].last, likes: "\(number)",user:userlogged, date: dateFormatter.string(from: date))
                 save(post)
                 
             case .failure(let error):
